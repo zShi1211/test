@@ -9308,7 +9308,7 @@
     const bD = new Date(bs).valueOf();
     const eD = new Date(es).valueOf();
     const diffTime = (eD - bD) / 1000 / 60 / 60 / 24;
-    time.innerHTML = diffTime;
+    time.innerHTML = diffTime.toFixed(3);
     
 
     const c_reat1 = document.querySelector(".c_reat1")
