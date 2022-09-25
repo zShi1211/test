@@ -9238,12 +9238,14 @@
     }
 
     // 2022-09-25 14:00
-    console.log(year, month, day, hours, minutes)
-    begin.innerHTML = `${year}-${n2s(month)}-${day} ${hours - 2}:00`
-    end.innerHTML = `${year}-${n2s(month)}-${day} ${20}:00`
-    const bD = new Date(`${year}-${n2s(month)}-${day} ${hours - 2}:00`);
-    const eD = new Date(`${year}-${n2s(month)}-${day} ${20}:00`);
+    const bs  = `${year}-${n2s(month)}-${n2s(day)} ${n2s(hours - 2)}:00`
+    const es  = `${year}-${n2s(month)}-${n2s(day)} ${21}:30`
+    begin.innerHTML = bs;
+    end.innerHTML = es;
+    const bD = new Date(bs);
+    const eD = new Date(es);
     const diffTime = (eD - bD) / 1000 / 60 / 60 / 24;
+    console.log(diffTime)
     time.innerHTML = diffTime.toFixed(3)
     
 
@@ -9253,11 +9255,11 @@
     const a_pprove2 = document.querySelector(".a_pprove2")
     const a_pprove3 = document.querySelector(".a_pprove3")
 
-    c_reat1.innerHTML = `${year}-${n2s(month)}-${day-1} ${14}:13`
-    c_reat2.innerHTML = `${year}-${n2s(month)}-${day-1} ${14}:13:21`
-    a_pprove1.innerHTML = `${year}-${n2s(month)}-${day-1} ${15}:42`
-    a_pprove2.innerHTML = `${year}-${n2s(month)}-${day-1} ${15}:42`
-    a_pprove3.innerHTML = `${year}-${n2s(month)}-${day-1} ${15}:42:11`
+    c_reat1.innerHTML = `${year}-${n2s(month)}-${n2s(n2s(day-1))} ${14}:13`
+    c_reat2.innerHTML = `${year}-${n2s(month)}-${n2s(day-1)} ${14}:13:21`
+    a_pprove1.innerHTML = `${year}-${n2s(month)}-${n2s(day-1)} ${15}:42`
+    a_pprove2.innerHTML = `${year}-${n2s(month)}-${n2s(day-1)} ${15}:42`
+    a_pprove3.innerHTML = `${year}-${n2s(month)}-${n2s(day-1)} ${15}:42:11`
 
 
 
