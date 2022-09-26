@@ -164,20 +164,7 @@
             _width: 100px
         }
 
-        .amap-info-close {
-            position: absolute;
-            right: 5px;
-            _right: 12px;
-            +right: 11px;
-            top: 5px;
-            _top: 2px;
-            +top: 2px;
-            color: #c3c3c3;
-            text-decoration: none;
-            font: bold 16px/14px Tahoma, Verdana, sans-serif;
-            width: 14px;
-            height: 14px
-        }
+
 
         .amap-info-outer,
         .amap-menu-outer {
@@ -723,20 +710,7 @@
             _width: 100px
         }
 
-        .amap-info-close {
-            position: absolute;
-            right: 5px;
-            _right: 12px;
-            +right: 11px;
-            top: 5px;
-            _top: 2px;
-            +top: 2px;
-            color: #c3c3c3;
-            text-decoration: none;
-            font: bold 16px/14px Tahoma, Verdana, sans-serif;
-            width: 14px;
-            height: 14px
-        }
+
 
         .amap-info-outer,
         .amap-menu-outer {
@@ -1282,20 +1256,7 @@
             _width: 100px
         }
 
-        .amap-info-close {
-            position: absolute;
-            right: 5px;
-            _right: 12px;
-            +right: 11px;
-            top: 5px;
-            _top: 2px;
-            +top: 2px;
-            color: #c3c3c3;
-            text-decoration: none;
-            font: bold 16px/14px Tahoma, Verdana, sans-serif;
-            width: 14px;
-            height: 14px
-        }
+
 
         .amap-info-outer,
         .amap-menu-outer {
@@ -1841,20 +1802,7 @@
             _width: 100px
         }
 
-        .amap-info-close {
-            position: absolute;
-            right: 5px;
-            _right: 12px;
-            +right: 11px;
-            top: 5px;
-            _top: 2px;
-            +top: 2px;
-            color: #c3c3c3;
-            text-decoration: none;
-            font: bold 16px/14px Tahoma, Verdana, sans-serif;
-            width: 14px;
-            height: 14px
-        }
+
 
         .amap-info-outer,
         .amap-menu-outer {
@@ -2400,20 +2348,6 @@
             _width: 100px
         }
 
-        .amap-info-close {
-            position: absolute;
-            right: 5px;
-            _right: 12px;
-            +right: 11px;
-            top: 5px;
-            _top: 2px;
-            +top: 2px;
-            color: #c3c3c3;
-            text-decoration: none;
-            font: bold 16px/14px Tahoma, Verdana, sans-serif;
-            width: 14px;
-            height: 14px
-        }
 
         .amap-info-outer,
         .amap-menu-outer {
@@ -2959,20 +2893,6 @@
             _width: 100px
         }
 
-        .amap-info-close {
-            position: absolute;
-            right: 5px;
-            _right: 12px;
-            +right: 11px;
-            top: 5px;
-            _top: 2px;
-            +top: 2px;
-            color: #c3c3c3;
-            text-decoration: none;
-            font: bold 16px/14px Tahoma, Verdana, sans-serif;
-            width: 14px;
-            height: 14px
-        }
 
         .amap-info-outer,
         .amap-menu-outer {
@@ -9291,30 +9211,35 @@
         window.confirm('确定要撤回审批吗?')
     })
 
-    const date = new Date();
+    const beginDate = new Date();
+    beginDate.setHours((beginDate.getHours() - 1) >= 21 ? 20 : beginDate.getHours() - 1)
+    const endDate = new Date();
+    endDate.setHours((endDate.getHours() + 2) > 22 ? 22 : endDate.getHours() + 2)
     const begin = document.querySelector(".b_egin")
     const end = document.querySelector(".e_nd")
     const time = document.querySelector(".d_ay")
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+    const beginyear = beginDate.getFullYear();
+    const beginmonth = beginDate.getMonth() + 1;
+    const beginday = beginDate.getDate();
+    const beginhours = beginDate.getHours();
+    const beginminutes = beginDate.getMinutes();
+    const endyear = endDate.getFullYear();
+    const endmonth = endDate.getMonth() + 1;
+    const endday = endDate.getDate();
+    const endhours = endDate.getHours();
+    const endminutes = endDate.getMinutes();
 
     function n2s(n) {
         return n.toString().padStart(2, '0')
     }
 
     // 2022-09-25 14:00
-    const bs = `${year}-${n2s(month)}-${n2s(day)} ${n2s(hours - 1)}:00`
-    const es = `${year}-${n2s(month)}-${n2s(day)} ${21}:30`
+    const bs = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday)} ${n2s(beginhours)}:00`
+    const es = `${endyear}-${n2s(endmonth)}-${n2s(endday)} ${endhours}:30`
     begin.innerHTML = bs;
     end.innerHTML = es;
-    const bD = new Date(bs).valueOf();
-    const eD = new Date(es).valueOf();
-    const diffTime = (eD - bD) / 1000 / 60 / 60 / 24;
-    // time.innerHTML = diffTime.toFixed(3);
-    time.innerHTML = "0.423"
+    const diffTime = (endDate - beginDate) / 1000 / 60 / 60 / 24;
+    time.innerHTML = diffTime.toFixed(3);
 
 
     const c_reat1 = document.querySelector(".c_reat1")
@@ -9323,11 +9248,12 @@
     const a_pprove2 = document.querySelector(".a_pprove2")
     const a_pprove3 = document.querySelector(".a_pprove3")
 
-    c_reat1.innerHTML = `${year}-${n2s(month)}-${n2s(n2s(day - 1))} ${14}:13`
-    c_reat2.innerHTML = `${year}-${n2s(month)}-${n2s(day - 1)} ${14}:13:21`
-    a_pprove1.innerHTML = `${year}-${n2s(month)}-${n2s(day - 1)} ${15}:42`
-    a_pprove2.innerHTML = `${year}-${n2s(month)}-${n2s(day - 1)} ${15}:42`
-    a_pprove3.innerHTML = `${year}-${n2s(month)}-${n2s(day - 1)} ${15}:42:11`
+    beginDate.setDate(beginDate.getDate() - 1);
+    c_reat1.innerHTML = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday - 1)} ${14}:13`
+    c_reat2.innerHTML = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday - 1)} ${14}:13:21`
+    a_pprove1.innerHTML = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday - 1)} ${15}:42`
+    a_pprove2.innerHTML = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday - 1)} ${15}:42`
+    a_pprove3.innerHTML = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday - 1)} ${15}:42:11`
 
 
 
