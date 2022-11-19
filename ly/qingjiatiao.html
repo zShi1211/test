@@ -9214,7 +9214,7 @@
     const beginDate = new Date();
     beginDate.setHours((beginDate.getHours() - 1) >= 21 ? 20 : beginDate.getHours() )
     const endDate = new Date();
-    endDate.setHours((endDate.getHours() + 2) > 22 ? 22 : endDate.getHours() + 6)
+    endDate.setHours((endDate.getHours() + 6) > 22 ? 22 : endDate.getHours() + 6)
     const begin = document.querySelector(".b_egin")
     const end = document.querySelector(".e_nd")
     const time = document.querySelector(".d_ay")
