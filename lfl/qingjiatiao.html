@@ -9212,9 +9212,9 @@
     })
 
     const beginDate = new Date();
-    beginDate.setHours((beginDate.getHours() - 1) >= 21 ? 20 : beginDate.getHours() - 1)
+    beginDate.setHours(7)
     const endDate = new Date();
-    endDate.setHours((endDate.getHours() + 5) > 22 ? 22 : endDate.getHours() + 5)
+    endDate.setHours(18)
     const begin = document.querySelector(".b_egin")
     const end = document.querySelector(".e_nd")
     const time = document.querySelector(".d_ay")
@@ -9234,8 +9234,8 @@
     }
 
     // 2022-09-25 14:00
-    const bs = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday)} ${07}:00`
-    const es = `${endyear}-${n2s(endmonth)}-${n2s(endday)} ${18}:18`
+    const bs = `${beginyear}-${n2s(beginmonth)}-${n2s(beginday)} ${n2s(beginhours)}:00`
+    const es = `${endyear}-${n2s(endmonth)}-${n2s(endday)} ${n2s(endhours)}:18`
     begin.innerHTML = bs;
     end.innerHTML = es;
     const diffTime = (endDate - beginDate) / 1000 / 60 / 60 / 24;
